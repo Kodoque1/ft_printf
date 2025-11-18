@@ -1,6 +1,6 @@
 NAME := libftprintf.a
 LIBFT := libft.a
-SRC :=  ft_handler_hexa.c ft_handler.c ft_hexa.c ft_printf.c ft_printf.h
+SRC :=  ft_handler_hexa.c ft_handler.c ft_hexa.c ft_printf.c
 OBJ  := $(SRC:.c=.o)
 TEST := Test
 MAKEFLAGS += -r
