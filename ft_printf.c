@@ -57,7 +57,7 @@ int	handle_args(char c, va_list l)
 	return (n);
 }
 
-int	process_string(char *str, va_list l)
+int	process_string(const char *str, va_list l)
 {
 	int	sum;
 	int	i;
@@ -85,7 +85,7 @@ int	process_string(char *str, va_list l)
 	return (sum);
 }
 
-int	ft_printf(char *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	va_list	args;
 	int		sum;

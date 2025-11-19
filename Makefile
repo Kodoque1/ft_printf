@@ -15,8 +15,11 @@ CFLAGS := -Werror -Wextra -Wall
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(AR) $(NAME) $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
+	$(AR) $(NAME) $(OBJ) $(LIBFT)
+
+$(LIBFT):
+	cd Libft; make; mv $(LIBFT) ..
 
 # === CLEANING UP ===
 clean:
