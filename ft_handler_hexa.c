@@ -14,23 +14,35 @@
 
 int	printf_ito_bigx(va_list l)
 {
-	int	n;
+	unsigned int	n;
 	int	size;
 
-	n = (int)va_arg(l, int);
+	n = (int)va_arg(l, unsigned int);
 	size = 0;
-	ft_putito_bigx(n, &size);
+	if(n)
+		ft_putito_bigx(n, &size);
+	else
+	{
+		ft_putchar_fd('0', 1);
+		size = 1;
+	}
 	return (size);
 }
 
 int	printf_itox(va_list l)
 {
-	int	n;
+	unsigned int	n;
 	int	size;
 
-	n = (int)va_arg(l, int);
+	n = (int)va_arg(l,unsigned int);
 	size = 0;
-	ft_putito_bigx(n, &size);
+	if (n)
+		ft_putitox(n, &size);
+	else
+	{
+		ft_putchar_fd('0', 1);
+		size = 1;
+	}
 	return (size);
 }
 
@@ -41,7 +53,15 @@ int	printf_pointer(va_list l)
 
 	n = (long)va_arg(l, void *);
 	size = 2;
-	ft_putstr_fd("0x", 1);
-	ft_putito_bigx(n, &size);
+	if (n)
+	{
+		ft_putstr_fd("0x", 1);
+		ft_putitox(n, &size);
+	}
+	else
+	{
+		ft_putstr_fd("(nil)", 1);
+		size = 5;
+	}
 	return (size);
 }

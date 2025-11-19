@@ -23,8 +23,16 @@ int	printf_string(va_list l)
 	char	*str;
 
 	str = (char *)va_arg(l, char *);
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	if (str)
+	{
+		ft_putstr_fd(str, 1);
+		return (ft_strlen(str));
+	}
+	else
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
 }
 
 int	printf_decimal(va_list l)
@@ -48,7 +56,7 @@ int	printf_unsigned_decimal(va_list l)
 	char			*str;
 
 	n = va_arg(l, unsigned int);
-	str = ft_itoa(n);
+	str = ft_uitoa(n);
 	if (str == NULL)
 		return (-1);
 	ft_putstr_fd(str, 1);
