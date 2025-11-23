@@ -6,15 +6,13 @@
 /*   By: zaddi <zaddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:47:29 by zaddi             #+#    #+#             */
-/*   Updated: 2025/11/18 23:09:33 by zaddi            ###   ########.fr       */
+/*   Updated: 2025/11/23 21:18:54 by zaddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		(*g_fun_tab[256])(va_list l) = {NULL};
-
-void	init_fun_tab(void)
+void	init_fun_tab(int (*g_fun_tab[256])(va_list l))
 {
 	g_fun_tab['c'] = printf_char;
 	g_fun_tab['s'] = printf_string;
@@ -42,7 +40,7 @@ int	is_valid_option(char c)
 	return (0);
 }
 
-int	handle_args(char c, va_list l)
+int	handle_args(char c, va_list l, int (*g_fun_tab[256])(va_list l))
 {
 	int	n;
 
@@ -57,11 +55,11 @@ int	handle_args(char c, va_list l)
 	return (n);
 }
 
-int	process_string(const char *str, va_list l)
+int	process_string(const char *str, va_list l, int (*g_fun_tab[256])(va_list l))
 {
-	int	sum;
-	int	i;
-	int	n;
+	int			sum;
+	int			i;
+	int			n;
 
 	sum = 0;
 	i = 0;
@@ -69,7 +67,7 @@ int	process_string(const char *str, va_list l)
 	{
 		if (str[i] == '%')
 		{
-			n = handle_args(str[i + 1], l);
+			n = handle_args(str[i + 1], l, g_fun_tab);
 			if (n == -1)
 				return (-1);
 			i++;
@@ -87,13 +85,14 @@ int	process_string(const char *str, va_list l)
 
 int	ft_printf(const char *input, ...)
 {
-	va_list	args;
-	int		sum;
+	va_list		args;
+	int			sum;
+	static int	(*g_fun_tab[256])(va_list l) = {NULL};
 
 	sum = 0;
-	init_fun_tab();
+	init_fun_tab(g_fun_tab);
 	va_start(args, input);
-	sum = process_string(input, args);
+	sum = process_string(input, args, g_fun_tab);
 	va_end(args);
 	return (sum);
 }

@@ -19,7 +19,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	$(AR) $(NAME) $(OBJ)
 
 $(LIBFT):
-	cd Libft; make; mv $(LIBFT) ..
+	cd libft; make; mv $(LIBFT) ..
 
 # === CLEANING UP ===
 clean:
