@@ -6,13 +6,13 @@
 /*   By: zaddi <zaddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 23:26:45 by zaddi             #+#    #+#             */
-/*   Updated: 2025/11/18 23:33:37 by zaddi            ###   ########.fr       */
+/*   Updated: 2025/12/19 12:05:49 by zaddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
 int		ft_printf(const char *input, ...);

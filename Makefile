@@ -1,25 +1,22 @@
 NAME := libftprintf.a
-LIBFT := libft.a
+LIBFT_PATH ?= ../libft
 SRC :=  ft_handler_hexa.c ft_handler.c ft_hexa.c ft_printf.c
 OBJ  := $(SRC:.c=.o)
 TEST := Test
 MAKEFLAGS += -r
-
 RM := rm -f
 CC := cc
 AR = ar rcs
 CFLAGS := -Werror -Wextra -Wall
+CFLAGS += -Iincludes -I$(LIBFT_PATH)/includes
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
-
-$(LIBFT):
-	cd libft; make; mv $(LIBFT) ..
 
 # === CLEANING UP ===
 clean:
