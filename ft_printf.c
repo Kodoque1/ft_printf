@@ -6,11 +6,11 @@
 /*   By: zaddi <zaddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:47:29 by zaddi             #+#    #+#             */
-/*   Updated: 2025/11/23 21:18:54 by zaddi            ###   ########.fr       */
+/*   Updated: 2025/12/19 10:57:31 by zaddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft\ft_printf.h"
 
 void	init_fun_tab(int (*g_fun_tab[256])(va_list l))
 {
@@ -89,6 +89,8 @@ int	ft_printf(const char *input, ...)
 	int			sum;
 	static int	(*g_fun_tab[256])(va_list l) = {NULL};
 
+	if (input == NULL)
+		return (-1);
 	sum = 0;
 	init_fun_tab(g_fun_tab);
 	va_start(args, input);
