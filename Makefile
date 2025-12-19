@@ -1,5 +1,6 @@
 NAME := libftprintf.a
-SRC :=  ft_handler.c ft_handler_hexa.c ft_hexa.c ft_itoa.c ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c ft_uitoa.c ft_calloc.c ft_bzero.c ft_memset.c
+LIBFT := libft.a
+SRC :=  ft_handler_hexa.c ft_handler.c ft_hexa.c ft_printf.c
 OBJ  := $(SRC:.c=.o)
 TEST := Test
 MAKEFLAGS += -r
@@ -14,8 +15,11 @@ CFLAGS := -Werror -Wextra -Wall
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 	$(AR) $(NAME) $(OBJ)
+
+$(LIBFT):
+	cd libft; make; mv $(LIBFT) ..
 
 # === CLEANING UP ===
 clean:
