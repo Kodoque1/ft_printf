@@ -6,11 +6,11 @@
 /*   By: zaddi <zaddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:47:29 by zaddi             #+#    #+#             */
-/*   Updated: 2025/12/19 10:57:31 by zaddi            ###   ########.fr       */
+/*   Updated: 2025/12/19 11:01:44 by zaddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft\ft_printf.h"
+#include "ft_printf.h"
 
 void	init_fun_tab(int (*g_fun_tab[256])(va_list l))
 {
