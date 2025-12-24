@@ -23,8 +23,6 @@ clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME) $(LIBFT)
+	$(RM) $(NAME)
 
 re:	fclean all
-
-
